@@ -11,12 +11,70 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
 	<link rel="stylesheet" href="./assets/css/app.css">
   <title>imitationcom</title>
 </head>
 <body>
-	
+	<header>
+		<a href=""><img src="./assets/img/sitelogo.png" alt="ロゴ"></a>
+		<a href="" class="btn btn-default">ログアウト</a>
+	</header><!--ヘッダーend-->
+
+	<div class="main-img">
+		<img src="./assets/img/study.jpg" alt="勉強会風景写真">
+	</div><!--メイン画像end-->
+
+	<div class="row">
+		<form method="" action="">
+			<div class="col-xs-2">
+				<select name="" id="">
+					<option value="">日付</option>
+				</select>
+			</div>
+			<div class="col-xs-5">
+				<input type="text" placeholder="キーワードで検索">
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-success">検索</button>
+			</div>
+		</form>
+		<div class="col-xs-3">
+			<a href="" class="btn btn-danger">イベントを作成する</a>
+		</div>
+	</div><!--検索フォームとイベント作成へボタンend-->
+
+	<div class="row">
+		<div class="content col-xs-12">
+			<div class="content-title">
+				<h2>勉強会タイトル</h2>
+				<p>公開日：2019/12/15</p>
+			</div>
+			<div class="overview">
+				<p>日時：2019/12/20</p>
+				<p>会場：若草通のとこ</p>
+				<p>会費：500円</p>
+				<p>ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります</p>
+			</div>
+			<div class="content-footer">
+				<p>作成者：田中太郎</p>
+				<p>参加人数：5/10人</p>
+			</div>
+		</div>
+	</div><!--１つの勉強会のくくりend-->
+
+	<button class="btn btn-default">↓↓さらに表示する↓↓</button>
+
+	<footer>
+		<div class="sns-icon">
+			<img src="./assets/img/twitter.png" alt="ツイッター">
+			<img src="./assets/img/facebookicon.png" alt="フェイスブック">
+			<img src="./assets/img/instagram.png" alt="インスタグラム">
+		</div>
+		<div class="inquiry">
+			<a href="" class="btn btn-default">お問い合わせ</a>
+		</div>
+	</footer>
+
 
 
 
