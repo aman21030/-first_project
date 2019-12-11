@@ -1,14 +1,58 @@
 header{
 	background-color: #dddddd;
 	width: 100%;
-	height: 70px;
+	height: 100px;
 	display: flex;
 	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
-header{
+header img{
+	width: 150px;
+	height: auto;
+	margin-left: 20px;
+}
+header .btn{
+	height: 40px;
+	margin-right: 20px;
+}
+footer{
 	background-color: #dddddd;
 	width: 100%;
-	height: 70px;
+	height: 100px;
 	display: flex;
 	justify-content: space-between;
 }
+.sns-icon{
+	margin: auto 0;
+}
+.sns-icon img{
+	width: 50px;
+	height: 50px;
+}
+
+
+/* topページここから */
+.main-img img{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.content{
+	border: 1px solid #666666;
+	margin: 10px 0;
+}
+.content-title{
+	display: flex;
+	justify-content: space-between;
+}
+.content-footer{
+	display: flex;
+	justify-content: space-between;
+}
+
+.more{
+	margin: 10px auto;
+	display: block;
+}
+/* topページここまで */
