@@ -15,10 +15,9 @@
   <title>imitationcom</title>
 </head>
 <body>
-	<header>
-		<a href=""><img src="./assets/img/sitelogo.png" alt="ロゴ"></a>
-		<a href="" class="btn btn-default">ログアウト</a>
-	</header><!--ヘッダーend-->
+	<?php
+		require_once dirname(__FILE__) . '/includes/header.php';
+	?>
 
 	<div class="main-img">
 		<img src="./assets/img/study.jpg" alt="勉強会風景写真">
@@ -65,17 +64,9 @@
 	</div>
 	<button class="btn btn-default btn-lg more">↓↓さらに表示する↓↓</button>
 
-	<footer>
-		<div class="sns-icon">
-			<img src="./assets/img/twitter.png" alt="ツイッター">
-			<img src="./assets/img/facebookicon.png" alt="フェイスブック">
-			<img src="./assets/img/instagram.png" alt="インスタグラム">
-		</div>
-		<div class="inquiry">
-			<a href="" class="btn btn-default">お問い合わせ</a>
-		</div>
-	</footer>
-
+	<?php
+		require_once dirname(__FILE__) . '/includes/footer.php';
+	?>
 
 
 

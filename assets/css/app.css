@@ -1,3 +1,4 @@
+/* ヘッダーとフッターここから */
 header{
 	background-color: #dddddd;
 	width: 100%;
@@ -24,27 +25,34 @@ footer{
 	justify-content: space-between;
 }
 .sns-icon{
-	margin: auto 0;
+	margin: auto 20px;
 }
 .sns-icon img{
 	width: 50px;
 	height: 50px;
 }
-
+.inquiry{
+	margin: auto 20px;
+	display: block;
+}
+/* ヘッダーとフッターここまで */
 
 /* topページここから */
 .main-img img{
 	width: 100%;
 	margin-bottom: 20px;
 }
-
 .content{
 	border: 1px solid #666666;
 	margin: 10px 0;
+	padding: 10px;
 }
 .content-title{
 	display: flex;
 	justify-content: space-between;
+}
+.content-title h2{
+	margin-top: 0;
 }
 .content-footer{
 	display: flex;
@@ -56,3 +64,5 @@ footer{
 	display: block;
 }
 /* topページここまで */
+
+
