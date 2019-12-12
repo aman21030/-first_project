@@ -18,30 +18,30 @@
 	<?php
 		require_once dirname(__FILE__) . '/includes/header.php';
 	?>
-
+<div class="main">
 	<div class="main-img">
 		<img src="./assets/img/study.jpg" alt="勉強会風景写真">
 	</div><!--メイン画像end-->
-<div class="container">
-	<div class="row">
-		<form method="" action="">
-			<div class="col-xs-2">
-				<select name="" id="" class="form-control input-lg">
-					<option value="">日付</option>
-				</select>
+	<div class="container">
+		<div class="row">
+			<form method="" action="">
+				<div class="col-xs-2">
+					<select name="" id="" class="form-control input-lg">
+						<option value="">日付</option>
+					</select>
+				</div>
+				<div class="col-xs-5">
+					<input type="text" placeholder="キーワードで検索" class="form-control input-lg">
+				</div>
+				<div class="col-xs-2">
+					<button class="btn btn-success btn-lg">検索</button>
+				</div>
+			</form>
+			<div class="col-xs-3">
+				<a href="" class="btn btn-danger btn-lg">イベントを作成する</a>
 			</div>
-			<div class="col-xs-5">
-				<input type="text" placeholder="キーワードで検索" class="form-control input-lg">
-			</div>
-			<div class="col-xs-2">
-				<button class="btn btn-success btn-lg">検索</button>
-			</div>
-		</form>
-		<div class="col-xs-3">
-			<a href="" class="btn btn-danger btn-lg">イベントを作成する</a>
-		</div>
-	</div><!--検索フォームとイベント作成へボタンend-->
-</div>
+		</div><!--検索フォームとイベント作成へボタンend-->
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="content col-xs-12">
@@ -63,7 +63,7 @@
 		</div><!--１つの勉強会のくくりend-->
 	</div>
 	<button class="btn btn-default btn-lg more">↓↓さらに表示する↓↓</button>
-
+</div>
 	<?php
 		require_once dirname(__FILE__) . '/includes/footer.php';
 	?>
