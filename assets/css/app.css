@@ -146,3 +146,28 @@ input{
 		margin-top: 10px;
 	}
 /* セミナー一覧ここまで */
+
+/* セミナー参加画面ここから */
+.price{
+	border: 1px solid #666666;
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+}
+.question{
+	margin-top: 20px;
+}
+.payment-method{
+	text-align: center;
+	font-size: 30px;
+}
+.local{
+	text-align: center;
+	padding: 10px;
+}
+.stripe{
+	text-align: center;
+	padding: 10px;
+}
+/* セミナー参加画面ここまで */
+
