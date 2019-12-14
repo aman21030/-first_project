@@ -171,3 +171,13 @@ input{
 }
 /* セミナー参加画面ここまで */
 
+/* セミナー新規作成画面ここから */
+textarea{
+	margin-bottom: 30px;
+}
+.confirm-btn{
+	display: block;
+	margin: 0px auto 10px;
+}
+/* セミナー新規作成画面ここまで */
+
