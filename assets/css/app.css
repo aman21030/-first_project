@@ -46,6 +46,17 @@ footer{
 }
 /* ヘッダーとフッターここまで */
 
+/* 共通CSSココから */
+.btn-center{
+	margin: 10px auto;
+	display: block;
+	width: 70%;
+}
+input{
+	margin-bottom: 30px;
+}
+/* 共通CSSココまで */
+
 /* topページここから */
 .main-img img{
 	width: 100%;
@@ -95,9 +106,10 @@ footer{
 .l-content h3{
 	margin-bottom: 30px;
 }
-.btn-center{
-	margin: 10px auto;
-	display: block;
-	width: 90%;
-}
+
 /* ログインページココまで */
+
+/* ユーザー新規登録ここから */
+
+
+/* ユーザー新規登録ここまで */

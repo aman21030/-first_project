@@ -19,28 +19,28 @@
 	<?php
 		require_once dirname(__FILE__) . '/../includes/header.php';
 	?>
-<div class="main">
-	<div class="container">
-		<div class="row l-content">
-			<div class="login-content">
-				<h3>ログインはこちら</h3>
-				<form action="../index.php" method="post">
+	<div class="main">
+		<div class="container">
+			<div class="row l-content">
+				<div class="login-content">
+					<h3>ログインはこちら</h3>
+					<form action="../index.php" method="post">
+						<label>メールアドレス</label>
+						<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
+						<label>パスワード</label>
+						<input type="password" class="form-control input-lg" name="password" placeholder="パスワード" required>
+						<button class="btn btn-danger btn-center btn-lg">ログイン</button>
+					</form>
+				</div>
+				<div class="newuser-content">
+					<h3>新規登録はこちら</h3>
 					<label>メールアドレス</label>
-					<input type="mail" class="form-control" name="mail" placeholder="メールアドレス" required>
-					<label>パスワード</label>
-					<input type="password" class="form-control" name="password" placeholder="パスワード" required>
-					<button class="btn btn-danger btn-center">ログイン</button>
-				</form>
-			</div>
-			<div class="newuser-content">
-				<h3>新規登録はこちら</h3>
-				<label>メールアドレス</label>
-				<input type="mail" class="form-control" name="mail" placeholder="メールアドレス" required>
-				<a href="./newuser.php" class="btn btn-primary btn-center">新規登録</a>
+					<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
+					<a href="./newuser.php" class="btn btn-primary btn-center btn-lg">新規登録</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 	<?php
 		require_once dirname(__FILE__) . '/../includes/footer.php';
 	?>

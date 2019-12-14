@@ -16,9 +16,28 @@
   <title>imitationcom</title>
 </head>
 <body>
-	
-
-
+	<?php
+		require_once dirname(__FILE__) . '/../includes/header.php';
+	?>
+<div class="container main">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h1>～～ユーザー新規登録～～</h1>
+			<p>表示名とパスワードの設定をお願いします。</p>
+			<form action="./index.php" method="post">
+				<label>表示名</label>
+				<input type="text" class="form-control input-lg" placeholder="表示名">
+				<label>パスワード</label>
+				<input type="password" class="form-control input-lg" placeholder="パスワード">
+				<input type="password" class="form-control input-lg" placeholder="パスワードをもう一度入力">
+				<button type="submit" class="btn btn-success btn-center btn-lg">登録する</button>
+			</form>
+		</div>
+	</div>
+</div>
+	<?php
+		require_once dirname(__FILE__) . '/../includes/footer.php';
+	?>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
