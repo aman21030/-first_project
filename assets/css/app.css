@@ -110,6 +110,39 @@ input{
 /* ログインページココまで */
 
 /* ユーザー新規登録ここから */
-
-
 /* ユーザー新規登録ここまで */
+
+/* セミナー一覧ここから */
+	.seminar-title{
+		border: 1px solid #666666;
+		border-radius: 10px;
+		width: 100%;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		padding: 0 10px;
+	}
+	.seminar-detail p{
+		font-size: 30px;
+	}
+	.seminar-detail .created-date{
+		font-size: 14px;
+	}
+	.join-btn{
+		border: 1px solid #666666;
+		border-radius: 10px;
+		padding: 10px;
+		text-align: center;
+	}
+	.join-btn p{
+		font-size: 20px;
+	}
+	.seminar-content{
+		border: 1px solid #666666;
+		border-radius: 5px;
+		margin: 20px 0;
+		padding: 5px 10px;
+	}
+	.seminar-content h3{
+		margin-top: 10px;
+	}
+/* セミナー一覧ここまで */
