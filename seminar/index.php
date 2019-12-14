@@ -16,9 +16,47 @@
   <title>imitationcom</title>
 </head>
 <body>
-	
-
-
+	<?php
+		require_once dirname(__FILE__) . '/../includes/header.php';
+	?>
+	<div class="main">
+		<div class="seminar-title">
+			<h1>勉強会タイトル</h1>
+		</div>
+		<div class="seminar-introduction">
+			<div class="seminar-detail">
+				<p>日時：2019/12/18(水)19:00～21:00</p>
+				<p>場所：若草通りのとこ</p>
+				<p>主催者：○○○○</p>
+				<p>作成日：2019/12/10</p>
+			</div>
+			<div class="join-btn">
+				<p>お申し込みは<br>こちら</p>
+				<button type="submit" class="btn btn-danger">参加する</button>
+			</div>
+		</div>
+		<div class="seminar-content">
+			<h3>イベント概要</h3>
+			<p>こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。こんなイベントですよ。</p>
+		</div>
+		<div class="seminar-content">
+			<h3>日時・会場・会費</h3>
+			<p>日時：2019/12/18</p>
+			<p>会場：若草通りのとこ</p>
+			<p>会費：500円</p>
+		</div>
+		<div class="seminar-content">
+			<h3>タイムテーブル</h3>
+			<p>こんな時間割ですよ。</p>
+		</div>
+		<div class="seminar-content">
+			<h3>その他</h3>
+			<p>登壇枠募集中★</p>
+		</div>
+	</div>
+	<?php
+		require_once dirname(__FILE__) . '/../includes/footer.php';
+	?>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
