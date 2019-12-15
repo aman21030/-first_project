@@ -91,8 +91,8 @@
 					<p><?php echo $other; ?></p>
 					<input type="hidden" name="other" value="<?php echo $other; ?>">
 					<div class="button-group">
-						<button type="button" class="btn btn-default btn-lg">戻る</button>
-						<button type="submit" class="btn btn-success btn-lg">確定する</button>
+						<button type="button" class="btn btn-default btn-lg" onclick="history.back()">戻る</button>
+						<button type="submit" name="newseminar" class="btn btn-success btn-lg">確定する</button>
 					</div>
 				</div>
 			</form>

@@ -1,3 +1,46 @@
+<?php
+	require_once dirname(__FILE__) . '/includes/require.php';
+	$conn = new DbConn();
+
+	//セミナーINSERT
+	if(isset($_POST['newseminar'])){
+		$title = $_POST['title'];
+		$date = $_POST['date'];
+		$time = $_POST['time'];
+		$place =$_POST['place'];
+		$organizer = $_POST['organizer'];
+		$price = $_POST['price'];
+		$overview = $_POST['overview'];
+		$details = $_POST['details'];
+		$timetable = $_POST['timetable'];
+		$other = $_POST['other'];
+
+		$sql  = ' INSERT INTO seminars ';
+		$sql .= ' VALUES ("", "'.$title.'", "'.$date.'", "'.$time.'", "'.$place.'", "'.$organizer.'", "'.$price.'", "'.$overview.'", "'.$details.'", "'.$timetable.'", "'.$other.'", CURRENT_TIMESTAMP) ';
+		$conn->fetch($sql);
+	}
+
+	// セミナーSELECT
+		$sql  = ' SELECT * FROM seminars ';
+		$sql .= ' ORDER BY created_at DESC ';
+		$sql .= ' LIMIT 5 ';	
+		$seminars = $conn->fetch($sql);
+
+	//検索
+		if($_GET){
+			if(!empty($_GET['search_date'])){
+				$search_date = htmlspecialchars($_GET['search_date']);
+				$sql .= ' AND date = '.$search_date;
+			}
+			if(!empty($_GET['search_word'])){
+				$search_word = htmlspecialchars($_GET['search_word']);
+				$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
+			}
+		}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,17 +67,28 @@
 	</div><!--メイン画像end-->
 	<div class="container">
 		<div class="row">
-			<form method="" action="">
+			<form method="get" action="./index.php">
 				<div class="col-xs-2">
-					<select name="" id="" class="form-control input-lg">
+					<select name="search_date" id="" class="form-control input-lg">
 						<option value="">日付</option>
+						<?php
+							foreach($seminars as $seminar){
+								echo '<option value="'.$seminar['date'].'"';
+								if($search_date == $seminar['date']){
+									echo 'selected';
+								}
+								echo '>';
+								echo $seminar['date'];
+								echo '</option>';
+							}
+						?>
 					</select>
 				</div>
 				<div class="col-xs-5">
-					<input type="text" placeholder="キーワードで検索" class="form-control input-lg">
+					<input type="text" name="search_word" placeholder="キーワードで検索" class="form-control input-lg">
 				</div>
 				<div class="col-xs-2">
-					<button class="btn btn-success btn-lg">検索</button>
+					<button type="submit" class="btn btn-success btn-lg">検索</button>
 				</div>
 			</form>
 			<div class="col-xs-3">
@@ -43,26 +97,30 @@
 		</div><!--検索フォームとイベント作成へボタンend-->
 	</div>
 	<div class="container">
-		<div class="row">
-			<div class="content col-xs-12">
-				<div class="content-title">
-					<h2>勉強会タイトル</h2>
-					<p>公開日：2019/12/15</p>
-				</div>
-				<div class="overview">
-					<p>日時：2019/12/20</p>
-					<p>会場：若草通のとこ</p>
-					<p>会費：500円</p>
-					<p>ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります　ここに概要が入ります</p>
-				</div>
-				<div class="content-footer">
-					<p>作成者：田中太郎</p>
-					<p>参加人数：5/10人</p>
-				</div>
-			</div>
-		</div><!--１つの勉強会のくくりend-->
+		<?php
+			foreach($seminars as $seminar){
+				echo ' <div class="row"> ';
+				echo '   <div class="content col-xs-12"> ';			
+				echo '     <div class="content-title"> ';
+				echo '	     <h2>'.$seminar['title'].'</h2> ';
+				echo '       <p>公開日：'.$seminar['created_at'].'</p> ';
+				echo '     </div> ';
+				echo '     <div class="overview"> ';
+				echo '       <p>日時：'.$seminar['date'].'</p> ';
+				echo '       <p>会場：'.$seminar['place'].'</p> ';
+				echo '       <p>会費：'.$seminar['price'].'円</p> ';
+				echo '       <p>'.$seminar['overview'].'</p> ';
+				echo '     </div> ';
+				echo '     <div class="content-footer"> ';
+				echo '       <p>主催者：'.$seminar['organizer'].'</p> ';
+				echo '       <p>参加人数：5/10人</p> ';//また後でやる・・・
+				echo '     </div> ';
+				echo '	 </div> ';
+				echo ' </div> ';//１つの勉強会のくくりend
+			}
+		?>
 	</div>
-	<button class="btn btn-default btn-lg more">↓↓さらに表示する↓↓</button>
+	<button type="button" class="btn btn-default btn-lg more">↓↓さらに表示する↓↓</button>
 </div>
 	<?php
 		require_once dirname(__FILE__) . '/includes/footer.php';
