@@ -181,3 +181,16 @@ textarea{
 }
 /* セミナー新規作成画面ここまで */
 
+/* セミナー新規作成確認画面ここから */
+.space{
+	margin-top: 10px;
+}
+.button-group{
+	display: flex;
+	justify-content: flex-end;
+}
+.button-group button{
+	display: block;
+	margin: 10px;
+}
+/* セミナー新規作成確認画面ここから */
