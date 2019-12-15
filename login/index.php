@@ -1,3 +1,8 @@
+<?php
+	require_once dirname(__FILE__) . '/../includes/islogin.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,12 +29,19 @@
 			<div class="row l-content">
 				<div class="login-content">
 					<h3>ログインはこちら</h3>
+					<?php
+						if($_POST){
+							echo '<div class="alert alert-danger" role="alert">';
+							echo $errorMessage;
+							echo '</div>';
+						}
+					?>
 					<form action="../index.php" method="post">
 						<label>メールアドレス</label>
 						<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
 						<label>パスワード</label>
 						<input type="password" class="form-control input-lg" name="password" placeholder="パスワード" required>
-						<button class="btn btn-danger btn-center btn-lg">ログイン</button>
+						<button type="submit" name="login" class="btn btn-danger btn-center btn-lg">ログイン</button>
 					</form>
 				</div>
 				<div class="newuser-content">
