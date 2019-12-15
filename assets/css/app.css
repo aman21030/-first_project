@@ -15,9 +15,11 @@ header{
 	padding-bottom: 10px;
 }
 header img{
-	width: 150px;
+	width: 100px;
 	height: auto;
 	margin-left: 20px;
+	background-color: lightcoral;
+	border-radius: 5px;
 }
 header .btn{
 	height: 40px;
