@@ -26,42 +26,41 @@
 				<div class="row">
 					<h1>〜〜勉強会新規作成〜〜</h1>
 					<label>勉強会タイトル</label>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="title" required>
 					<div class="col-xs-1">
 					<label>日時</label>
 					</div>
 					<div class="col-xs-4">
-						<input type="date" class="form-control" name="calendar" max="9999-12-31">
+						<input type="date" class="form-control" name="date" min="" max="9999-12-31" required>
 					</div>
 					<div class="col-xs-7">
-						<input type="text" class="form-control" placeholder="時間を入力">
+						<input type="text" class="form-control" name="time" placeholder="時間を入力" required>
 					</div>
-					<!-- <div class="col-xs-3"></div> -->
 
 					<label>場所</label>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="place" required>
 					<label>主催者</label>
-					<input type="text" class="form-control">
+					<input type="text" class="form-control" name="organizer" required>
 
 					<div class="col-xs-1">
 						<label>会費</label>
 					</div>
 					<div class="col-xs-4">
-						<input type="number" min="0" class="form-control">
+						<input type="number" min="0" class="form-control" name="price" required>
 					</div>
 					<div class="col-xs-7">円</div>
 				</div>
 				<div class="row">
 					<h4>★イベント説明欄★</h4>
 					<label>イベント概要</label>
-					<textarea name="" id="" rows="5" class="form-control"></textarea>
+					<textarea name="overview" id="" rows="5" class="form-control" required></textarea>
 					<label>日時・会場・会費</label>
-					<textarea name="" id="" rows="5" class="form-control"></textarea>
+					<textarea name="details" id="" rows="5" class="form-control"></textarea>
 					<label>タイムテーブル</label>
-					<textarea name="" id="" rows="5" class="form-control"></textarea>
+					<textarea name="timetable" id="" rows="5" class="form-control"></textarea>
 					<label>その他</label>
-					<textarea name="" id="" rows="5" class="form-control"></textarea>
-					<button tyype="submit" class="btn btn-success btn-lg confirm-btn">確認する</button>
+					<textarea name="other" id="" rows="5" class="form-control"></textarea>
+					<button type="submit" class="btn btn-success btn-lg confirm-btn">確認する</button>
 				</div>
 			</form>
 		</div>

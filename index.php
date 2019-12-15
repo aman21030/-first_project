@@ -38,7 +38,7 @@
 				</div>
 			</form>
 			<div class="col-xs-3">
-				<a href="" class="btn btn-danger btn-lg">イベントを作成する</a>
+				<a href="./newseminar/index.php" class="btn btn-danger btn-lg">イベントを作成する</a>
 			</div>
 		</div><!--検索フォームとイベント作成へボタンend-->
 	</div>

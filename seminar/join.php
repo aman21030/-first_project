@@ -48,16 +48,26 @@
 					<div class="col-xs-6">
 						<div class="local">
 							<p class="payment-method">会場払いで</p>
-							<button type="submit" class="btn btn-danger btn-lg">参加する</button>
-						</div>
-					</div>
-					<div class="col-xs-6">
-						<div class="stripe">
-							<p class="payment-method">ストライプで決済して</p>
-							<button type="submit" class="btn btn-primary btn-lg">参加する</button>
+							<button type="submit" class="btn btn-danger">参加する</button>
 						</div>
 					</div>
 				</form>
+				<div class="col-xs-6">
+					<div class="stripe">
+						<p class="payment-method">ストライプで決済して</p>
+						<form action="../stripe/charge.php" method="post">
+							<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+									data-key="pk_test_ayoixpekguQ6vHEr27R8I0QW00AVzbqc78"
+									data-amount="500"
+									data-name="このセミナーの参加費は500円です"
+									data-locale="auto"
+									data-allow-remember-me="false"
+									data-label="参加する"
+									data-currency="jpy">
+							</script>
+						</form>
+					</div>
+				</div>
 			</div>
 
 		</div>

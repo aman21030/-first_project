@@ -1,3 +1,15 @@
+<?php
+	$title = $_POST['title'];
+	$date = $_POST['date'];
+	$time = $_POST['time'];
+	$place =$_POST['place'];
+	$organizer = $_POST['organizer'];
+	$price = $_POST['price'];
+	$overview = $_POST['overview'];
+	$details = $_POST['details'];
+	$timetable = $_POST['timetable'];
+	$other = $_POST['other'];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -28,55 +40,59 @@
 				</div>
 				<div class="row">
 					<label class="space">勉強会タイトル</label>
-					<p>タイトルが入ります</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $title; ?></p>
+					<input type="hidden" name="title" value="<?php echo $title; ?>">
 				</div>
 				<div class="row space">
 					<div class="col-xs-2">
 					<label>日時</label>
 					</div>
 					<div class="col-xs-10">
-						<p>2019/12/18　　19:00〜21:00</p>
-						<input type="hidden" name="calendar" value="">
-						<input type="hidden" name="" value="">
+						<p><?php
+							 echo date('Y年n月j日', strtotime($date));
+							 echo 　　;
+							 echo $time;
+							 ?></p>
+						<input type="hidden" name="date" value="<?php echo $date; ?>">
+						<input type="hidden" name="time" value="<?php echo $time; ?>">
 					</div>
 				</div>
 				<div class="row">
 					<label class="space">場所</label>
-					<p>若草通のとこ</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $place; ?></p>
+					<input type="hidden" name="place" value="<?php echo $place; ?>">
 				</div>
 				<div class="row">
 					<label class="space">主催者</label>
-					<p>◯◯◯◯</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $organizer; ?></p>
+					<input type="hidden" name="organizer" value="<?php echo $organizer; ?>">
 				</div>
-				<div class="row">
+				<div class="row space">
 					<div class="col-xs-2">
-						<label class="space">会費</label>
+						<label>会費</label>
 					</div>
 					<div class="col-xs-10">
-						500円
-						<input type="hidden" name="" value="">
+						<?php echo $price; ?>円
+						<input type="hidden" name="price" value="<?php echo $price; ?>">
 					</div>
 				</div>
 				<div class="row">
 					<h4>★イベント説明欄★</h4>
 					<label class="space">イベント概要</label>
-					<p>イベントの概要が入りますイベントの概要が入りますイベントの概要が入りますイベントの概要が入りますイベントの概要が入りますイベントの概要が入ります</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $overview; ?></p>
+					<input type="hidden" name="overview" value="<?php echo $overview; ?>">
 					<label class="space">日時・会場・会費</label>
-					<p>日時・会場・会費のこと</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $details; ?></p>
+					<input type="hidden" name="details" value="<?php echo $details; ?>">
 					<label class="space">タイムテーブル</label>
-					<p>タイムテーブル的な。</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $timetable; ?></p>
+					<input type="hidden" name="timetable" value="<?php echo $timetable; ?>">
 					<label class="space">その他</label>
-					<p>その他書きたいこと〜〜〜</p>
-					<input type="hidden" name="" value="">
+					<p><?php echo $other; ?></p>
+					<input type="hidden" name="other" value="<?php echo $other; ?>">
 					<div class="button-group">
 						<button type="button" class="btn btn-default btn-lg">戻る</button>
-						<button tyype="submit" class="btn btn-success btn-lg">確定する</button>
+						<button type="submit" class="btn btn-success btn-lg">確定する</button>
 					</div>
 				</div>
 			</form>

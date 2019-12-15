@@ -169,6 +169,10 @@ input{
 	text-align: center;
 	padding: 10px;
 }
+.stripe-button{
+	width: 90px;
+	height: 30px;
+}
 /* セミナー参加画面ここまで */
 
 /* セミナー新規作成画面ここから */
