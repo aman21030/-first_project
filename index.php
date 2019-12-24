@@ -102,7 +102,7 @@
 				echo ' <div class="row"> ';
 				echo '   <div class="content col-xs-12"> ';			
 				echo '     <div class="content-title"> ';
-				echo '	     <h2>'.$seminar['title'].'</h2> ';
+				echo '	     <a href="./seminar/index.php"><h2>'.$seminar['title'].'</h2></a> ';
 				echo '       <p>公開日：'.$seminar['created_at'].'</p> ';
 				echo '     </div> ';
 				echo '     <div class="overview"> ';
