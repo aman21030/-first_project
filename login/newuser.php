@@ -23,7 +23,7 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h1>～～ユーザー新規登録～～</h1>
-			<p>表示名とパスワードの設定をお願いします。</p>
+			<p><?php //echo $email; ?>様、表示名とパスワードの設定をお願いします。</p>
 			<form action="./index.php" method="post">
 				<label>表示名</label>
 				<input type="text" class="form-control input-lg" placeholder="表示名">

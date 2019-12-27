@@ -1,6 +1,20 @@
 <?php
+	require_once dirname(__FILE__) . '/../includes/require.php';
 	require_once dirname(__FILE__) . '/../includes/islogin.php';
+	$conn = new DbConn();
 
+	//新規登録トークン作成
+	if(isset($_POST['create'])){
+		$email = $_POST['email'];
+
+		$token = sha1(uniqid(rand(),1));
+
+		$sql  = ' INSERT INTO s_users ';
+		$sql .= ' VALUES ("", "'.$email.'", null, "'.$token.'", null, null, CURRENT_TIMESTAMP)';
+		$conn->fetch($sql);
+
+		require_once dirname(__FILE__) . '/../includes/mail_token.php';
+	}
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +61,10 @@
 				<div class="newuser-content">
 					<h3>新規登録はこちら</h3>
 					<label>メールアドレス</label>
-					<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
-					<a href="./newuser.php" class="btn btn-primary btn-center btn-lg">新規登録</a>
+					<form action="./index.php" method="post">
+						<input type="mail" class="form-control input-lg" name="email" placeholder="メールアドレス" required>
+						<button type="submit" name="create" class="btn btn-primary btn-center btn-lg">新規登録</button>
+					</form>
 				</div>
 			</div>
 		</div>
