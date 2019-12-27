@@ -16,7 +16,7 @@
 		$other = $_POST['other'];
 
 		$sql  = ' INSERT INTO seminars ';
-		$sql .= ' VALUES ("", "'.$title.'", "'.$date.'", "'.$time.'", "'.$place.'", "'.$organizer.'", "'.$price.'", "'.$overview.'", "'.$details.'", "'.$timetable.'", "'.$other.'", CURRENT_TIMESTAMP) ';
+		$sql .= ' VALUES ("", "'.$title.'", "'.$date.'", "'.$time.'", "'.$place.'", "'.$organizer.'", "'.$price.'", "'.$overview.'", "'.$details.'", "'.$timetable.'", "'.$other.'", CURRENT_TIMESTAMP, "0") ';
 		$conn->fetch($sql);
 	}
 
@@ -26,10 +26,6 @@
 
 	//検索
 		if($_GET){
-			// if(!empty($_GET['search_date'])){
-			// 	$search_date = htmlspecialchars($_GET['search_date']);
-			// 	$sql .= ' AND date = '.$search_date;
-			// }
 			if(!empty($_GET['search_word'])){
 				$search_word = htmlspecialchars($_GET['search_word']);
 				$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
@@ -68,23 +64,7 @@
 	<div class="container">
 		<div class="row">
 			<form method="get" action="./index.php">
-				<div class="col-xs-2">
-					<select name="search_date" id="" class="form-control input-lg">
-						<option value="">日付</option>
-						<?php
-							foreach($seminars as $seminar){
-								echo '<option value="'.$seminar['date'].'"';
-								if($search_date == $seminar['date']){
-									echo 'selected';
-								}
-								echo '>';
-								echo $seminar['date'];
-								echo '</option>';
-							}
-						?>
-					</select>
-				</div>
-				<div class="col-xs-5">
+				<div class="col-xs-7">
 					<input type="text" name="search_word" placeholder="キーワードで検索" class="form-control input-lg" <?php if($_GET) echo 'value="'.$search_word.'"'; ?>>
 				</div>
 				<div class="col-xs-2">
