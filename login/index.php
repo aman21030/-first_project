@@ -15,6 +15,24 @@
 
 		require_once dirname(__FILE__) . '/../includes/mail_token.php';
 	}
+
+	//本登録アップデート
+	if($_POST){
+		$nickname = $_POST['nickname'];
+		$password = $_POST['password'];
+		$token = $_POST['token'];
+
+		$hash_pass = password_hash($password, PASSWORD_DEFAULT);
+
+		$sql  = ' UPDATE S_users SET ';
+		$sql .= ' nickname = "'.$nickname.'",';
+		$sql .= ' password = "'.$hash_pass.'",';
+		$sql .= ' pre_token = NULL';
+		$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'"';
+		$conn->fetch($sql);
+		session_destroy();
+	}
+
 ?>
 
 <!DOCTYPE html>
