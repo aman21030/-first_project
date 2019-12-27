@@ -22,22 +22,22 @@
 
 	// セミナーSELECT
 		$sql  = ' SELECT * FROM seminars ';
-		$sql .= ' ORDER BY created_at DESC ';
-		$sql .= ' LIMIT 5 ';	
-		$seminars = $conn->fetch($sql);
+		$sql .= ' WHERE delete_flag = 0 ';
 
 	//検索
 		if($_GET){
-			if(!empty($_GET['search_date'])){
-				$search_date = htmlspecialchars($_GET['search_date']);
-				$sql .= ' AND date = '.$search_date;
-			}
+			// if(!empty($_GET['search_date'])){
+			// 	$search_date = htmlspecialchars($_GET['search_date']);
+			// 	$sql .= ' AND date = '.$search_date;
+			// }
 			if(!empty($_GET['search_word'])){
 				$search_word = htmlspecialchars($_GET['search_word']);
 				$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
 			}
 		}
-
+		$sql .= ' ORDER BY created_at DESC ';
+		$sql .= ' LIMIT 5 ';	
+		$seminars = $conn->fetch($sql);
 ?>
 
 
@@ -85,7 +85,7 @@
 					</select>
 				</div>
 				<div class="col-xs-5">
-					<input type="text" name="search_word" placeholder="キーワードで検索" class="form-control input-lg">
+					<input type="text" name="search_word" placeholder="キーワードで検索" class="form-control input-lg" <?php if($_GET) echo 'value="'.$search_word.'"'; ?>>
 				</div>
 				<div class="col-xs-2">
 					<button type="submit" class="btn btn-success btn-lg">検索</button>
