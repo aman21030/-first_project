@@ -1,5 +1,5 @@
 <?php
-	require_once dirname(__FILE__) . '/../require.php';
+	require_once dirname(__FILE__) . '/require.php';
 	$conn = new DbConn();
 
 	//セッション開始
