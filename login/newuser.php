@@ -23,14 +23,14 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h1>～～ユーザー新規登録～～</h1>
-			<p>表示名とパスワードの設定をお願いします。</p>
+			<p><?php //echo $email; ?>様、表示名とパスワードの設定をお願いします。</p>
 			<form action="./index.php" method="post">
 				<label>表示名</label>
-				<input type="text" class="form-control input-lg" placeholder="表示名">
+				<input type="text" name="nickname" class="form-control input-lg" placeholder="表示名" required>
 				<label>パスワード</label>
-				<input type="password" class="form-control input-lg" placeholder="パスワード">
-				<input type="password" class="form-control input-lg" placeholder="パスワードをもう一度入力">
-				<button type="submit" class="btn btn-success btn-center btn-lg">登録する</button>
+				<input type="password" name="password1" class="form-control input-lg" placeholder="パスワード" required>
+				<input type="password" name="password2" class="form-control input-lg" placeholder="パスワードをもう一度入力" required>
+				<button type="submit" name="" class="btn btn-success btn-center btn-lg">登録する</button>
 			</form>
 		</div>
 	</div>

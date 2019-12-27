@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>購入が完了しました！</h1>
+    <a href="../index.php" class="btn btn-default">TOPに戻る</a>
 </body>
 </html>

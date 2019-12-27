@@ -1,3 +1,40 @@
+<?php
+	require_once dirname(__FILE__) . '/../includes/require.php';
+	require_once dirname(__FILE__) . '/../includes/islogin.php';
+	$conn = new DbConn();
+
+	//新規登録トークン作成
+	if(isset($_POST['create'])){
+		$email = $_POST['email'];
+
+		$token = sha1(uniqid(rand(),1));
+
+		$sql  = ' INSERT INTO s_users ';
+		$sql .= ' VALUES ("", "'.$email.'", null, "'.$token.'", null, null, CURRENT_TIMESTAMP)';
+		$conn->fetch($sql);
+
+		require_once dirname(__FILE__) . '/../includes/mail_token.php';
+	}
+
+	//本登録アップデート
+	if($_POST){
+		$nickname = $_POST['nickname'];
+		$password = $_POST['password'];
+		$token = $_POST['token'];
+
+		$hash_pass = password_hash($password, PASSWORD_DEFAULT);
+
+		$sql  = ' UPDATE S_users SET ';
+		$sql .= ' nickname = "'.$nickname.'",';
+		$sql .= ' password = "'.$hash_pass.'",';
+		$sql .= ' pre_token = NULL';
+		$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'"';
+		$conn->fetch($sql);
+		session_destroy();
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,19 +61,28 @@
 			<div class="row l-content">
 				<div class="login-content">
 					<h3>ログインはこちら</h3>
+					<?php
+						if($_POST){
+							echo '<div class="alert alert-danger" role="alert">';
+							echo $errorMessage;
+							echo '</div>';
+						}
+					?>
 					<form action="../index.php" method="post">
 						<label>メールアドレス</label>
 						<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
 						<label>パスワード</label>
 						<input type="password" class="form-control input-lg" name="password" placeholder="パスワード" required>
-						<button class="btn btn-danger btn-center btn-lg">ログイン</button>
+						<button type="submit" name="login" class="btn btn-danger btn-center btn-lg">ログイン</button>
 					</form>
 				</div>
 				<div class="newuser-content">
 					<h3>新規登録はこちら</h3>
 					<label>メールアドレス</label>
-					<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
-					<a href="./newuser.php" class="btn btn-primary btn-center btn-lg">新規登録</a>
+					<form action="./index.php" method="post">
+						<input type="mail" class="form-control input-lg" name="email" placeholder="メールアドレス" required>
+						<button type="submit" name="create" class="btn btn-primary btn-center btn-lg">新規登録</button>
+					</form>
 				</div>
 			</div>
 		</div>
