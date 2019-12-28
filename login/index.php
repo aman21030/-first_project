@@ -24,12 +24,13 @@
 
 		$hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
-		$sql  = ' UPDATE S_users SET ';
+		$sql  = ' UPDATE s_users SET ';
 		$sql .= ' nickname = "'.$nickname.'",';
 		$sql .= ' password = "'.$hash_pass.'",';
 		$sql .= ' pre_token = NULL';
 		$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'"';
 		$conn->fetch($sql);
+		var_dump($sql);
 		session_destroy();
 	}
 
