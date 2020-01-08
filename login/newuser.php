@@ -52,7 +52,7 @@
 				<label>パスワード</label>
 				<input type="password" name="password1" class="form-control input-lg" placeholder="パスワード" required>
 				<input type="password" name="password2" class="form-control input-lg" placeholder="パスワードをもう一度入力" required>
-				<button type="submit" name="" class="btn btn-success btn-center btn-lg">登録する</button>
+				<button type="submit" name="registration" class="btn btn-success btn-center btn-lg">登録する</button>
 			</form>
 		</div>
 	</div>
