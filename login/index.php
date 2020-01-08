@@ -17,19 +17,20 @@
 	}
 
 	//本登録アップデート
-	if($_POST){
+	if(isset($_POST['registration'])){
 		$nickname = $_POST['nickname'];
 		$password = $_POST['password'];
 		$token = $_POST['token'];
 
 		$hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
-		$sql  = ' UPDATE S_users SET ';
+		$sql  = ' UPDATE s_users SET ';
 		$sql .= ' nickname = "'.$nickname.'",';
 		$sql .= ' password = "'.$hash_pass.'",';
 		$sql .= ' pre_token = NULL';
 		$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'"';
 		$conn->fetch($sql);
+		var_dump($sql);
 		session_destroy();
 	}
 
@@ -62,11 +63,11 @@
 				<div class="login-content">
 					<h3>ログインはこちら</h3>
 					<?php
-						if($_POST){
-							echo '<div class="alert alert-danger" role="alert">';
-							echo $errorMessage;
-							echo '</div>';
-						}
+						// if($_POST){
+						// 	echo '<div class="alert alert-danger" role="alert">';
+						// 	echo $errorMessage;
+						// 	echo '</div>';
+						// }
 					?>
 					<form action="../index.php" method="post">
 						<label>メールアドレス</label>

@@ -1,3 +1,25 @@
+<?php
+	session_start();
+	if($_GET['token']){
+		session_regenerate_id();
+		$token = $_GET['token'];
+		$_SESSION['token'] = $token;
+	}//else{
+		//header('Location: https://6101.web-seito.com/imitationcom/index.php');
+		//exit;
+	//}
+
+	//DBに接続
+	require_once dirname(__FILE__) . '/../includes/require.php';
+	$conn = new DbConn();
+
+	$sql  = ' SELECT * FROM s_users ';
+	$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'" ';
+	$users = $conn->fetch($sql);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -23,14 +45,14 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h1>～～ユーザー新規登録～～</h1>
-			<p><?php //echo $email; ?>様、表示名とパスワードの設定をお願いします。</p>
+			<p><?php echo $s_user['email']; ?>様、表示名とパスワードの設定をお願いします。</p>
 			<form action="./index.php" method="post">
 				<label>表示名</label>
 				<input type="text" name="nickname" class="form-control input-lg" placeholder="表示名" required>
 				<label>パスワード</label>
 				<input type="password" name="password1" class="form-control input-lg" placeholder="パスワード" required>
 				<input type="password" name="password2" class="form-control input-lg" placeholder="パスワードをもう一度入力" required>
-				<button type="submit" name="" class="btn btn-success btn-center btn-lg">登録する</button>
+				<button type="submit" name="registration" class="btn btn-success btn-center btn-lg">登録する</button>
 			</form>
 		</div>
 	</div>
