@@ -1,6 +1,6 @@
 <?php
 	require_once dirname(__FILE__) . '/../includes/require.php';
-	require_once dirname(__FILE__) . '/../includes/islogin.php';
+	// require_once dirname(__FILE__) . '/../includes/islogin.php';
 	$conn = new DbConn();
 
 	//新規登録トークン作成
@@ -17,9 +17,10 @@
 	}
 
 	//本登録アップデート
+	session_start();
 	if(isset($_POST['registration'])){
 		$nickname = $_POST['nickname'];
-		$password = $_POST['password'];
+		$password = $_POST['password1'];
 		$token = $_POST['token'];
 
 		$hash_pass = password_hash($password, PASSWORD_DEFAULT);
@@ -33,6 +34,43 @@
 		var_dump($sql);
 		session_destroy();
 	}
+
+	//ログインボタンを押してPOSTしたとき
+	if(isset($_POST['login'])){
+
+		//入力されたメールアドレスとパスワードを取得
+		$login_mail = $_POST['mail'];
+		$login_password = $_POST['password'];
+
+		// パスワードを暗号化する
+		$original_string = $login_password;
+		// $hashed_string = hash('sha256', $original_string);
+
+		// データベースにあるか
+		$sql  = ' SELECT * FROM s_users ';
+		$sql .= ' WHERE email = "'.$login_mail.'"';
+		// $sql .= ' AND password = "'.$login_password.'"';
+		$logins = $conn->fetch($sql);
+
+		var_dump($logins);
+		// データベースに１件のみ存在する場合はログインOK
+		if(isset($logins) && count($logins) == 1){
+			$login = $logins[0];
+			var_dump($login['password']);
+			// セッションにユーザーIDを保持する
+			if(password_verify( $login_password, $login['password'])){
+				session_regenerate_id();
+				$_SESSION['user_id'] = $login['id'];
+				$_SESSION['nickname'] = $login['nickname'];
+
+				$login_success_url = "http://6101.web-seito.com/imitationcom/";
+				header("Location: {$login_success_url}");
+				exit;
+			}
+		}
+	}
+	
+	
 
 ?>
 
@@ -69,7 +107,7 @@
 						// 	echo '</div>';
 						// }
 					?>
-					<form action="../index.php" method="post">
+					<form action="./index.php" method="post">
 						<label>メールアドレス</label>
 						<input type="mail" class="form-control input-lg" name="mail" placeholder="メールアドレス" required>
 						<label>パスワード</label>
