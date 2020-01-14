@@ -1,3 +1,16 @@
+<?php
+	session_start();
+	require_once dirname(__FILE__) . '/../includes/require.php';
+	$conn = new DbConn();
+
+		$sql  = ' SELECT * FROM seminars ';
+		$sql .= ' WHERE id="'.$_GET['id'].'"' ;
+		$seminars = $conn->fetch($sql);
+
+		if(COUNT($seminars)>0){
+			$seminar=$seminars[0];
+		}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,15 +35,15 @@
 	<div class="main">
 		<div class="container">	
 			<div class="seminar-title">
-				<h1>勉強会タイトル</h1>
+				<h1><?php echo $seminar['title']; ?></h1>
 			</div>
 			<div class="row">
 				<div class="col-xs-9">
 					<div class="seminar-detail">
-						<p>日時：2019/12/18(水)19:00～21:00</p>
-						<p>場所：若草通りのとこ</p>
-						<p>主催者：○○○○</p>
-						<p class="created-date">作成日：2019/12/10</p>
+						<p>日時：<?php echo $seminar['date'].' '.$seminar['time']; ?></p>
+						<p>場所：<?php echo $seminar['place']; ?></p>
+						<p>主催者：<?php echo $seminar['organizer']; ?></p>
+						<p class="created-date">作成日：<?php echo $seminar['created_at']; ?></p>
 					</div>
 				</div>
 				<div class="col-xs-3">
