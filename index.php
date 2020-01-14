@@ -113,7 +113,6 @@
 				echo '     </div> ';
 				echo '     <div class="content-footer"> ';
 				echo '       <p>主催者：'.$seminar['organizer'].'</p> ';
-				echo '       <p>参加人数：5/10人</p> ';//また後でやる・・・
 				echo '     </div> ';
 				echo '	 </div> ';
 				echo ' </div> ';//１つの勉強会のくくりend

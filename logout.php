@@ -30,7 +30,7 @@
 				<h2>ログアウトしました★</h2>
 			</div>
 			<div class="row text-center">
-				<img src="assets/img/logout.png" alt="バイバイしてる画像" width="70%" height="70%">
+				<img src="assets/img/logout.png" alt="バイバイしてる画像" width="30%" height="30%">
 			</div>
 			<div class="row text-center">
 			<a href="index.php" class="btn btn-default btn-lg">TOPへ</a>
