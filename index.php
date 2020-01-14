@@ -23,6 +23,7 @@
 	// セミナーSELECT
 		$sql  = ' SELECT * FROM seminars ';
 		$sql .= ' WHERE delete_flag = 0 ';
+		$max_data = count($conn->fetch($sql));
 
 	//検索
 		if($_GET){
@@ -31,8 +32,27 @@
 				$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
 			}
 		}
+
+	//ページネーション
+	//1ページあたりの表示数
+		$limit = 5;
+	
+	//全ページ数
+		$max_page = ceil($max_data/$limit);
+	//現在のページ
+		if($_GET['page']){
+			$current_page = $_GET['page'];
+		}else{
+			$current_page = 1;
+		}
+		$next_page = $current_page+1;
+		$prev_page = $current_page-1;
+	//データ取得の開始位置
+		$start_no = ($current_page-1)*$limit;
+	
+
 		$sql .= ' ORDER BY created_at DESC ';
-		$sql .= ' LIMIT 5 ';	
+		$sql .= ' LIMIT '.$limit.' OFFSET '.$start_no ;	
 		$seminars = $conn->fetch($sql);
 ?>
 
@@ -100,7 +120,41 @@
 			}
 		?>
 	</div>
-	<button type="button" class="btn btn-default btn-lg more">↓↓さらに表示する↓↓</button>
+	<nav class="text-center">
+	<ul class="pagination">
+		<li>
+		<?php
+			if($prev_page <= 0){
+				echo '<a href="#" aria-label="前のページへ" disabled>';
+			}else{
+				echo '<a href="?page='.$prev_page.'" aria-label="前のページへ">';
+			}
+		?>
+				<span aria-hidden="true">«</span>
+			</a>
+		</li>
+		<?php
+			for($page=1; $page<=$max_page; $page++){
+				if($page == $current_page){
+					echo '<li class="active"><a href="">'.$page.'</a></li>';
+				}else{
+					echo '<li><a href="?page='.$page.'">'.$page.'</a></li>';
+				}
+			}
+		?>
+		<li>
+			<?php
+				if($next_page > $max_page){
+					echo '<a href="#" aria-label="次のページへ" disabled>';
+				}else{
+					echo '<a href="?page='.$next_page.'&'.$query.'" aria-label="次のページへ">';
+				}
+			?>
+				<span aria-hidden="true">»</span>
+			</a>
+		</li>
+	</ul>
+</nav>
 </div>
 	<?php
 		require_once dirname(__FILE__) . '/includes/footer.php';

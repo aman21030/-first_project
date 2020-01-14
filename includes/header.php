@@ -6,7 +6,8 @@ session_start();
 	if(is_null($_SESSION['user_id'])){
 		echo '	 <a href="http://6101.web-seito.com/imitationcom/login/index.php" class="btn btn-default">ログイン・新規登録</a> ';
 	}elseif(isset($_SESSION['user_id'])){
-		echo '	 <a href="" class="btn btn-default">ログアウト</a> ';
+		echo '   <h4>ようこそ　'.$_SESSION['nickname'].'　さん</h4>';
+		echo '	 <a href="http://6101.web-seito.com/imitationcom/logout.php" class="btn btn-default">ログアウト</a> ';
 	}
 	
 	echo ' </header> ';//ヘッダーend
