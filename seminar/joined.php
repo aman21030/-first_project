@@ -1,7 +1,17 @@
 <?php
 	session_start();
+	require_once dirname(__FILE__) . '/../includes/require.php';
+	$conn = new DbConn();
 
-	session_destroy();
+	if(isset($_POST['postpay'])){
+		$user_id = $_POST['user_id'];
+		$seminar_id = $_POST['seminar_id'];
+		$payment_method = 0;
+
+    $sql  = ' INSERT INTO payment ';
+    $sql .= ' VALUES ("", "'.$user_id.'", "'.$seminar_id.'", "'.$payment_method.'", CURRENT_TIMESTAMP)';
+    $conn->fetch($sql);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -17,28 +27,24 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
-	<link rel="stylesheet" href="assets/css/app.css">
+	<link rel="stylesheet" href="../assets/css/app.css">
   <title>imitationcom</title>
 </head>
 <body>
 	<?php
-		require_once dirname(__FILE__) . '/includes/header.php';
+		require_once dirname(__FILE__) . '/../includes/header.php';
 	?>
 	<div class="main">
-		<div class="container">
+		<div class="container">	
 			<div class="row text-center">
-				<h2>ログアウトしました★</h2>
-			</div>
-			<div class="row text-center">
-				<img src="assets/img/logout.png" alt="バイバイしてる画像" width="70%" height="70%">
-			</div>
-			<div class="row text-center">
-			<a href="index.php" class="btn btn-default btn-lg">TOPへ</a>
+				<h1>★参加完了★</h1>
+				<a href="../index.php" class="btn btn-default">TOPへ</a>
 			</div>
 		</div>
 	</div>
+
 	<?php
-		require_once dirname(__FILE__) . '/includes/footer.php';
+		require_once dirname(__FILE__) . '/../includes/footer.php';
 	?>
 
 	<!-- Latest compiled and minified JavaScript -->

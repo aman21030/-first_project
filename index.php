@@ -4,16 +4,16 @@
 
 	//セミナーINSERT
 	if(isset($_POST['newseminar'])){
-		$title = htmlspecialchars($_POST['title']);
-		$date = htmlspecialchars($_POST['date']);
-		$time = htmlspecialchars($_POST['time']);
-		$place = htmlspecialchars($_POST['place']);
-		$organizer = htmlspecialchars($_POST['organizer']);
-		$price = htmlspecialchars($_POST['price']);
-		$overview = htmlspecialchars($_POST['overview']);
-		$details = htmlspecialchars($_POST['details']);
-		$timetable = htmlspecialchars($_POST['timetable']);
-		$other = htmlspecialchars($_POST['other']);
+		$title = $_POST['title'];
+		$date = $_POST['date'];
+		$time = $_POST['time'];
+		$place = $_POST['place'];
+		$organizer = $_POST['organizer'];
+		$price = $_POST['price'];
+		$overview = $_POST['overview'];
+		$details = $_POST['details'];
+		$timetable = $_POST['timetable'];
+		$other = $_POST['other'];
 
 		$sql  = ' INSERT INTO seminars ';
 		$sql .= ' VALUES ("", "'.$title.'", "'.$date.'", "'.$time.'", "'.$place.'", "'.$organizer.'", "'.$price.'", "'.$overview.'", "'.$details.'", "'.$timetable.'", "'.$other.'", CURRENT_TIMESTAMP, "0") ';

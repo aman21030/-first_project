@@ -1,14 +1,14 @@
 <?php
-	$title = $_POST['title'];
-	$date = $_POST['date'];
-	$time = $_POST['time'];
-	$place =$_POST['place'];
-	$organizer = $_POST['organizer'];
-	$price = $_POST['price'];
-	$overview = $_POST['overview'];
-	$details = $_POST['details'];
-	$timetable = $_POST['timetable'];
-	$other = $_POST['other'];
+	$title = nl2br(htmlspecialchars($_POST['title']));
+	$date = nl2br(htmlspecialchars($_POST['date']));
+	$time = nl2br(htmlspecialchars($_POST['time']));
+	$place = nl2br(htmlspecialchars($_POST['place']));
+	$organizer = nl2br(htmlspecialchars($_POST['organizer']));
+	$price = nl2br(htmlspecialchars($_POST['price']));
+	$overview = nl2br(htmlspecialchars($_POST['overview']));
+	$details = nl2br(htmlspecialchars($_POST['details']));
+	$timetable = nl2br(htmlspecialchars($_POST['timetable']));
+	$other = nl2br(htmlspecialchars($_POST['other']));
 ?>
 <!DOCTYPE html>
 <html lang="ja">

@@ -20,9 +20,17 @@ try {
     $chargeId = $charge['id'];
 
     // (2) 注文データベースの更新などStripeとは関係ない処理
-    // :
-    // :
-    // :
+    
+    require_once dirname(__FILE__) . '/../includes/require.php';
+		$conn = new DbConn();
+
+		$user_id = $_POST['user_id'];
+		$seminar_id = $_POST['seminar_id'];
+		$payment_method = 1;
+
+    $sql  = ' INSERT INTO payment ';
+    $sql .= ' VALUES ("", "'.$user_id.'", "'.$seminar_id.'", "'.$payment_method.'", CURRENT_TIMESTAMP)';
+    $conn->fetch($sql);
 
     // (3) 売上の確定
     $charge->capture();
