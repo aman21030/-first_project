@@ -50,8 +50,8 @@
 				<label>表示名</label>
 				<input type="text" name="nickname" class="form-control input-lg" placeholder="表示名" required>
 				<label>パスワード</label>
-				<input type="password" name="password1" class="form-control input-lg" placeholder="パスワード" required>
-				<input type="password" name="password2" class="form-control input-lg" placeholder="パスワードをもう一度入力" required>
+				<input type="password" name="password1" class="form-control input-lg" id="password" placeholder="パスワード" required>
+				<input type="checkbox" id="password-check">パスワードを表示する
 				<button type="submit" name="registration" class="btn btn-success btn-center btn-lg">登録する</button>
 			</form>
 		</div>

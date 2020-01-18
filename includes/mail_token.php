@@ -12,9 +12,9 @@
   もしこのメールに心当たりがなければ無視してください。';
 
   if(mb_send_mail($mail_to,$title,$contents)){
-    $alertMessage .= '<br>'.$email.'へ本登録メールを送信しました。';
+    $alertMessage = '<div class="alert alert-success">'.$email.'へ本登録メールを送信しました。</div>';
   }else{
-    $alertMessage .= '<br>'.$email.'へ本登録メールを操船できませんでした。';
+    $alertMessage = '<div class="alert alert-success">'.$email.'へ本登録メールを送信できませんでした。</div>';
   }
-
+  // '<div class="alert alert-success">'.$alertMessage.'</div>'
 ?>

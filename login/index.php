@@ -5,7 +5,7 @@
 
 	//新規登録トークン作成
 	if(isset($_POST['create'])){
-		$email = $_POST['email'];
+		$email = htmlspecialchars($_POST['email']);
 
 		$token = sha1(uniqid(rand(),1));
 
@@ -14,6 +14,8 @@
 		$conn->fetch($sql);
 
 		require_once dirname(__FILE__) . '/../includes/mail_token.php';
+
+
 	}
 
 	//本登録アップデート
@@ -31,7 +33,6 @@
 		$sql .= ' pre_token = NULL';
 		$sql .= ' WHERE pre_token = "'.$_SESSION['token'].'"';
 		$conn->fetch($sql);
-		var_dump($sql);
 		session_destroy();
 	}
 
@@ -98,6 +99,9 @@
 	<div class="main">
 		<div class="container">
 			<div class="row l-content">
+			<?php
+				
+			?>
 				<div class="login-content">
 					<h3>ログインはこちら</h3>
 					<?php
@@ -116,6 +120,11 @@
 					</form>
 				</div>
 				<div class="newuser-content">
+				<?php
+					if($_POST){
+						echo $alertMessage ;
+					}
+					?>
 					<h3>新規登録はこちら</h3>
 					<label>メールアドレス</label>
 					<form action="./index.php" method="post">
