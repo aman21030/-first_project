@@ -23,15 +23,19 @@
 	// セミナーSELECT
 		$sql  = ' SELECT * FROM seminars ';
 		$sql .= ' WHERE delete_flag = 0 ';
-		$max_data = count($conn->fetch($sql));
+		
 
-	//検索
-		if($_GET){
-			if(!empty($_GET['search_word'])){
-				$search_word = htmlspecialchars($_GET['search_word']);
-				$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
+		//検索
+	if($_GET){
+		if(isset($_GET['search_word'])){
+			$search_word = htmlspecialchars($_GET['search_word']);
+			if($search_word){
+			$sql .= ' AND (title LIKE "%'.$search_word.'%" OR place LIKE "%'.$search_word.'%" OR organizer LIKE "%'.$search_word.'%" OR overview LIKE "%'.$search_word.'%" )';
 			}
+			$query .= '&search_word=' .$search_word;
 		}
+	}
+	$max_data = count($conn->fetch($sql));
 
 	//ページネーション
 	//1ページあたりの表示数
@@ -54,6 +58,11 @@
 		$sql .= ' ORDER BY created_at DESC ';
 		$sql .= ' LIMIT '.$limit.' OFFSET '.$start_no ;	
 		$seminars = $conn->fetch($sql);
+
+	
+
+
+
 ?>
 
 
@@ -126,7 +135,7 @@
 			if($prev_page <= 0){
 				echo '<a href="#" aria-label="前のページへ" disabled>';
 			}else{
-				echo '<a href="?page='.$prev_page.'" aria-label="前のページへ">';
+				echo '<a href="?page='.$prev_page.'&'.$query.'" aria-label="前のページへ">';
 			}
 		?>
 				<span aria-hidden="true">«</span>
@@ -137,7 +146,7 @@
 				if($page == $current_page){
 					echo '<li class="active"><a href="">'.$page.'</a></li>';
 				}else{
-					echo '<li><a href="?page='.$page.'">'.$page.'</a></li>';
+					echo '<li><a href="?page='.$page.'&'.$query.'">'.$page.'</a></li>';
 				}
 			}
 		?>
