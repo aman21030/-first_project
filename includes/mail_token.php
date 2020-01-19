@@ -16,5 +16,4 @@
   }else{
     $alertMessage = '<div class="alert alert-success">'.$email.'へ本登録メールを送信できませんでした。</div>';
   }
-  // '<div class="alert alert-success">'.$alertMessage.'</div>'
 ?>

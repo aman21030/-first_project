@@ -20,6 +20,22 @@
 		$conn->fetch($sql);
 	}
 
+	//マスターデータ取得
+	$sql = ' SELECT * FROM seminars ';
+	$seminars = $conn->fetch($sql);
+
+	//セミナー期限でデリート
+	foreach($seminars as $seminar){
+		$sql  = ' UPDATE seminars SET ';
+		if($seminar['date']<date('Y-m-d')){
+			$sql .= ' delete_flag = 1 WHERE id = '.$seminar['id'];
+		}else{
+			$sql .= ' delete_flag = 0 WHERE id = '.$seminar['id'];
+		}
+		$conn->fetch($sql);
+	}
+	
+	
 	// セミナーSELECT
 		$sql  = ' SELECT * FROM seminars ';
 		$sql .= ' WHERE delete_flag = 0 ';
@@ -108,23 +124,23 @@
 	<div class="container">
 		<?php
 			foreach($seminars as $seminar){
-				echo ' <div class="row"> ';
-				echo '   <div class="content col-xs-12"> ';			
-				echo '     <div class="content-title"> ';
-				echo '	     <a href="./seminar/index.php?id='.$seminar['id'].'"><h2>'.$seminar['title'].'</h2></a> ';
-				echo '       <p>公開日：'.$seminar['created_at'].'</p> ';
-				echo '     </div> ';
-				echo '     <div class="overview"> ';
-				echo '       <p>日時：'.$seminar['date'].'</p> ';
-				echo '       <p>会場：'.$seminar['place'].'</p> ';
-				echo '       <p>会費：'.$seminar['price'].'円</p> ';
-				echo '       <p>'.$seminar['overview'].'</p> ';
-				echo '     </div> ';
-				echo '     <div class="content-footer"> ';
-				echo '       <p>主催者：'.$seminar['organizer'].'</p> ';
-				echo '     </div> ';
-				echo '	 </div> ';
-				echo ' </div> ';//１つの勉強会のくくりend
+					echo ' <div class="row"> ';
+					echo '   <div class="content col-xs-12"> ';			
+					echo '     <div class="content-title"> ';
+					echo '	     <a href="./seminar/index.php?id='.$seminar['id'].'"><h2>'.$seminar['title'].'</h2></a> ';
+					echo '       <p>公開日：'.$seminar['created_at'].'</p> ';
+					echo '     </div> ';
+					echo '     <div class="overview"> ';
+					echo '       <p>日時：'.$seminar['date'].'</p> ';
+					echo '       <p>会場：'.$seminar['place'].'</p> ';
+					echo '       <p>会費：'.$seminar['price'].'円</p> ';
+					echo '       <p>'.$seminar['overview'].'</p> ';
+					echo '     </div> ';
+					echo '     <div class="content-footer"> ';
+					echo '       <p>主催者：'.$seminar['organizer'].'</p> ';
+					echo '     </div> ';
+					echo '	 </div> ';
+					echo ' </div> ';//１つの勉強会のくくりend
 			}
 		?>
 	</div>
