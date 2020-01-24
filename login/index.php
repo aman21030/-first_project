@@ -3,20 +3,6 @@
 	// require_once dirname(__FILE__) . '/../includes/islogin.php';
 	$conn = new DbConn();
 
-	//新規登録トークン作成
-	if(isset($_POST['create'])){
-		$email = htmlspecialchars($_POST['email']);
-
-		$token = sha1(uniqid(rand(),1));
-
-		$sql  = ' INSERT INTO s_users ';
-		$sql .= ' VALUES ("", "'.$email.'", null, "'.$token.'", null, null, CURRENT_TIMESTAMP)';
-		$conn->fetch($sql);
-
-		require_once dirname(__FILE__) . '/../includes/mail_token.php';
-
-
-	}
 
 	//本登録アップデート
 	session_start();
@@ -57,7 +43,7 @@
 		// データベースに１件のみ存在する場合はログインOK
 		if(isset($logins) && count($logins) == 1){
 			$login = $logins[0];
-			var_dump($login['password']);
+			// var_dump($login['password']);
 			// セッションにユーザーIDを保持する
 			if(password_verify( $login_password, $login['password'])){
 				session_regenerate_id();
@@ -120,17 +106,8 @@
 					</form>
 				</div>
 				<div class="newuser-content">
-				<?php
-					if($_POST){
-						echo $alertMessage ;
-					}
-					?>
 					<h3>新規登録はこちら</h3>
-					<label>メールアドレス</label>
-					<form action="./index.php" method="post">
-						<input type="mail" class="form-control input-lg" name="email" placeholder="メールアドレス" required>
-						<button type="submit" name="create" class="btn btn-primary btn-center btn-lg">新規登録</button>
-					</form>
+					<a href="register.php" class="btn btn-primary btn-center btn-lg">新規登録</a>
 				</div>
 			</div>
 		</div>
